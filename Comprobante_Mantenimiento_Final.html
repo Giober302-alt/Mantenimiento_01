@@ -1953,29 +1953,46 @@ function buildJsPDF() {
 
   // ── ACTIVIDADES ────────────────────────────────────────────────────
   sectionBar('Actividades Realizadas');
-  const halfW = CW/2 - 2;
-  // render in two columns
+  const txtW  = CW / 2 - 13;  // text width per column (room for checkbox + margin)
+  const lineH = 4.5;           // mm per line
+  const rowPad = 1.5;          // extra gap between rows
+
+  // Pre-set font so splitTextToSize measures correctly
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+
   for (let i = 0; i < actItems.length; i += 2) {
-    checkPage(7);
     const a = actItems[i];
-    const b = actItems[i+1];
+    const b = actItems[i + 1];
 
-    checkbox(a.checked, ML+2, y);
-    doc.setFont('helvetica', a.checked?'bold':'normal');
+    // Measure both columns with NORMAL font first (worst case)
+    doc.setFont('helvetica', 'normal');
     doc.setFontSize(8);
-    doc.setTextColor(26,35,64);
-    const la = doc.splitTextToSize(a.text, halfW-8);
-    doc.text(la, ML+7, y+0.5);
-    const linesA = la.length;
+    const la = doc.splitTextToSize(a.text, txtW);
+    const lb = b ? doc.splitTextToSize(b.text, txtW) : [];
+    const rowH = Math.max(la.length, lb.length, 1) * lineH + rowPad;
 
+    checkPage(rowH + 2);
+
+    // ── Left column ──
+    checkbox(a.checked, ML + 2, y);
+    // ALWAYS reset after checkbox() — it may leave white color + size 6
+    doc.setFontSize(8);
+    doc.setTextColor(26, 35, 64);
+    doc.setFont('helvetica', a.checked ? 'bold' : 'normal');
+    doc.text(la, ML + 7, y + 0.6);
+
+    // ── Right column ──
     if (b) {
-      checkbox(b.checked, ML+CW/2+2, y);
-      doc.setFont('helvetica', b.checked?'bold':'normal');
-      const lb = doc.splitTextToSize(b.text, halfW-8);
-      doc.text(lb, ML+CW/2+7, y+0.5);
+      checkbox(b.checked, ML + CW / 2 + 2, y);
+      // ALWAYS reset after checkbox()
+      doc.setFontSize(8);
+      doc.setTextColor(26, 35, 64);
+      doc.setFont('helvetica', b.checked ? 'bold' : 'normal');
+      doc.text(lb, ML + CW / 2 + 7, y + 0.6);
     }
 
-    y += Math.max(linesA, 1) * 4.5 + 0.5;
+    y += rowH;
   }
   y += 3;
 
