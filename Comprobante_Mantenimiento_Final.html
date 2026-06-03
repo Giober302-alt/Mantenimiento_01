@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Comprobante de Mantenimiento y Servicios</title>
+<title>SIMASAS · Comprobante de Mantenimiento y Servicios</title>
 
 <!-- Google Fonts: Barlow Condensed (industrial/technical feel) + DM Sans -->
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -978,6 +978,179 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
   color: rgba(255,255,255,.2);
   margin-top: 1.4rem;
 }
+
+/* ═══════════════════════════════
+   OTRAS ACTIVIDADES
+═══════════════════════════════ */
+.otras-wrap {
+  grid-column: 1 / -1;
+  margin-top: .3rem;
+}
+.otras-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: .6rem .9rem;
+  border: 1.5px dashed var(--border);
+  border-radius: var(--r);
+  background: var(--off);
+  cursor: pointer;
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--blue);
+  transition: all .18s;
+  user-select: none;
+}
+.otras-toggle-label:hover {
+  border-color: var(--blue2);
+  background: #eff6ff;
+}
+.otras-toggle-label::before {
+  content: '+';
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--blue2);
+  color: white;
+  font-size: .9rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform .2s;
+}
+#otras-area {
+  display: none;
+  margin-top: .6rem;
+  animation: fadeIn .2s ease;
+}
+#otras-area.open { display: block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+#otras-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: .65rem .9rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .86rem;
+  color: var(--text);
+  background: var(--off);
+  resize: vertical;
+  outline: none;
+  transition: border-color .18s, box-shadow .18s;
+}
+#otras-textarea:focus {
+  border-color: var(--blue2);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+}
+.otras-hint {
+  font-size: .72rem;
+  color: var(--gray);
+  margin-top: .3rem;
+}
+
+/* ═══════════════════════════════
+   EVIDENCIAS CARD
+═══════════════════════════════ */
+.evidencias-card { margin-bottom: 1rem; }
+.ev-momento {
+  margin-bottom: 1.2rem;
+}
+.ev-momento-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--navy);
+  margin-bottom: .6rem;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.ev-momento-title .ev-badge {
+  font-size: .65rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+.ev-antes  .ev-badge { background: rgba(245,158,11,.15); color: #b45309; }
+.ev-durante .ev-badge { background: rgba(37,99,235,.12); color: var(--blue); }
+.ev-despues .ev-badge { background: rgba(22,163,74,.12); color: #15803d; }
+
+.ev-drop-zone {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  background: var(--off);
+  transition: all .2s;
+  cursor: pointer;
+}
+.ev-drop-zone:hover, .ev-drop-zone.dragover {
+  border-color: var(--blue2);
+  background: #eff6ff;
+}
+.ev-drop-zone input[type="file"] {
+  display: none;
+}
+.ev-drop-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+  cursor: pointer;
+}
+.ev-drop-icon { font-size: 1.8rem; }
+.ev-drop-text {
+  font-size: .8rem;
+  color: var(--gray);
+  text-align: center;
+  line-height: 1.5;
+}
+.ev-drop-text strong { color: var(--blue2); }
+.ev-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: .8rem;
+}
+.ev-thumb {
+  position: relative;
+  width: 80px; height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1.5px solid var(--light);
+  background: #f0f0f0;
+  flex-shrink: 0;
+}
+.ev-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ev-thumb .ev-del {
+  position: absolute;
+  top: 3px; right: 3px;
+  width: 18px; height: 18px;
+  background: rgba(211,47,47,.85);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: .65rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  line-height: 1;
+}
+.ev-count-badge {
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--blue2);
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 20px;
+  padding: 2px 9px;
+  margin-left: auto;
+}
 </style>
 </head>
 
@@ -1010,10 +1183,10 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 
   <!-- Brand bar -->
   <div class="brand-bar">
-    <span class="brand-title">Comprobante de Mantenimiento y Servicios</span>
+    <span class="brand-title">SIMASAS · Ascensores, Escaleras y Rampas Eléctricas</span>
     <div class="brand-emergency">
-      <span class="em-icon">🚨</span>
-      <div class="em-text">EMERGENCIAS 24 HRS<br>312 3123420</div>
+      <span class="em-icon">📞</span>
+      <div class="em-text">318 411 3196 · 311 512 2624<br>infosimasas@gmail.com</div>
     </div>
   </div>
 
@@ -1131,12 +1304,40 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
         <h2>Actividades Realizadas</h2>
         <p>Marque todas las actividades ejecutadas en la visita</p>
       </div>
-      <!-- Counter -->
-      <span class="activities-counter" id="act-counter">0 / 26</span>
+      <span class="activities-counter" id="act-counter">0 seleccionadas</span>
     </div>
 
     <div class="activities-grid" id="activities-grid">
       <!-- Actividades se generan desde JS -->
+    </div>
+
+    <!-- Otras actividades -->
+    <div class="otras-wrap">
+      <div class="otras-toggle-label" onclick="toggleOtras(this)">
+        Otras actividades no listadas
+      </div>
+      <div id="otras-area">
+        <textarea id="otras-textarea"
+          placeholder="Describa otras actividades realizadas que no aparecen en el listado anterior (una por línea o separadas por coma)…"></textarea>
+        <p class="otras-hint">💡 Ingrese actividades adicionales realizadas durante el servicio.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ CARD 3b: Evidencias por actividad (rendered by JS) ═══ -->
+  <div id="ev-section-wrapper" style="display:none; margin-bottom:1rem;">
+    <div class="card" style="padding-bottom:.5rem">
+      <div class="card-header">
+        <div class="card-header-icon">📷</div>
+        <div class="card-header-text">
+          <h2>Evidencias por Actividad</h2>
+          <p>Fotos antes, durante y después de cada actividad seleccionada</p>
+        </div>
+        <span class="ev-count-badge" id="ev-total-badge">0 fotos</span>
+      </div>
+      <div id="ev-activities-container">
+        <!-- Populated dynamically when activities are checked -->
+      </div>
     </div>
   </div>
 
@@ -1322,7 +1523,212 @@ const ACTIVITIES = [
 
 function updateCounter() {
   const checked = document.querySelectorAll('#activities-grid input:checked').length;
-  document.getElementById('act-counter').textContent = `${checked} / ${ACTIVITIES.length}`;
+  document.getElementById('act-counter').textContent = `${checked} seleccionadas`;
+}
+
+/* Toggle "Otras actividades" */
+function toggleOtras(el) {
+  const area = document.getElementById('otras-area');
+  area.classList.toggle('open');
+  el.style.setProperty('--rot', area.classList.contains('open') ? '45deg' : '0deg');
+  rebuildEvSection(); // show/hide evidence panel for Otras
+}
+
+/* ═══════════════════════════════════════
+   EVIDENCIAS POR ACTIVIDAD
+   Structure:
+   evStore = {
+     "act-0":    { label:"Revisión de maquina…", images:{ antes:[], durante:[], despues:[] } },
+     "act-otras":{ label:"Otras actividades",    images:{ antes:[], durante:[], despues:[] } }
+   }
+═══════════════════════════════════════ */
+const evStore = {};   // keyed by actKey (act-0, act-1 … act-otras)
+
+const MOMENTS = [
+  { key:'antes',    label:'Antes',    icon:'🟡', color:'#b45309', bg:'rgba(245,158,11,.08)', border:'rgba(245,158,11,.25)' },
+  { key:'durante',  label:'Durante',  icon:'🔵', color:'#1e4db7', bg:'rgba(30,77,183,.07)',  border:'rgba(30,77,183,.22)'  },
+  { key:'despues',  label:'Después',  icon:'🟢', color:'#15803d', bg:'rgba(22,163,74,.07)',  border:'rgba(22,163,74,.22)'  }
+];
+
+/* ── Called when any activity checkbox changes ── */
+function updateCounter() {
+  const checked = document.querySelectorAll('#activities-grid input:checked').length;
+  document.getElementById('act-counter').textContent = checked + ' seleccionadas';
+  rebuildEvSection();
+}
+
+/* ── Rebuild the full evidencias section ── */
+function rebuildEvSection() {
+  const wrapper    = document.getElementById('ev-section-wrapper');
+  const container  = document.getElementById('ev-activities-container');
+
+  // Collect currently active keys
+  const activeKeys = [];
+
+  // Standard activities
+  ACTIVITIES.forEach((act, i) => {
+    const cb = document.getElementById('act-' + i);
+    if (cb && cb.checked) {
+      const k = 'act-' + i;
+      if (!evStore[k]) evStore[k] = { label: act, images: { antes:[], durante:[], despues:[] } };
+      activeKeys.push(k);
+    }
+  });
+
+  // Otras actividades (always show if section is open)
+  const otrasOpen = document.getElementById('otras-area')?.classList.contains('open');
+  if (otrasOpen) {
+    const k = 'act-otras';
+    if (!evStore[k]) evStore[k] = { label: 'Otras actividades', images: { antes:[], durante:[], despues:[] } };
+    activeKeys.push(k);
+  }
+
+  // Remove keys no longer active (preserve images if re-selected)
+  // We intentionally keep evStore data even when unchecked so images aren't lost on accidental uncheck
+
+  if (activeKeys.length === 0) {
+    wrapper.style.display = 'none';
+    return;
+  }
+
+  wrapper.style.display = 'block';
+
+  // Build HTML for each active activity
+  container.innerHTML = activeKeys.map(k => buildActivityEvHTML(k)).join('');
+  updateEvTotalBadge();
+}
+
+/* ── Build the HTML panel for one activity ── */
+function buildActivityEvHTML(k) {
+  const entry = evStore[k];
+  const totalImgs = MOMENTS.reduce((s,m) => s + entry.images[m.key].length, 0);
+
+  const momentsHTML = MOMENTS.map(m => {
+    const imgs  = entry.images[m.key];
+    const count = imgs.length;
+    const thumbsHTML = imgs.map((src, idx) => `
+      <div class="ev-thumb">
+        <img src="${src}" alt="Evidencia ${idx+1}">
+        <button class="ev-del" onclick="evDelete('${k}','${m.key}',${idx})" title="Eliminar">✕</button>
+      </div>`).join('');
+
+    return `
+      <div style="flex:1;min-width:170px;background:${m.bg};border:1.5px solid ${m.border};border-radius:10px;padding:.8rem;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:.6rem;">
+          <span style="font-size:.8rem;font-weight:700;color:${m.color};text-transform:uppercase;letter-spacing:.06em;">${m.icon} ${m.label}</span>
+          <span style="margin-left:auto;font-size:.68rem;font-weight:700;color:${m.color};background:white;border:1px solid ${m.border};border-radius:20px;padding:1px 7px;" id="cnt-${k}-${m.key}">${count} foto${count!==1?'s':''}</span>
+        </div>
+        <div class="ev-drop-zone" style="padding:.7rem;border-color:${m.border};"
+             onclick="document.getElementById('fi-${k}-${m.key}').click()"
+             ondragover="evDragOver(event,'${k}','${m.key}')"
+             ondragleave="evDragLeave(event,'${k}','${m.key}')"
+             ondrop="evDrop(event,'${k}','${m.key}')">
+          <input type="file" id="fi-${k}-${m.key}" accept="image/*" multiple
+                 onchange="evLoad(this,'${k}','${m.key}')">
+          <div class="ev-drop-label" style="gap:.2rem;" onclick="event.stopPropagation()">
+            <span class="ev-drop-icon" style="font-size:1.2rem;">🖼️</span>
+            <span class="ev-drop-text" style="font-size:.72rem;">
+              <strong style="color:${m.color};">Agregar fotos</strong><br>
+              Clic o arrastre aquí
+            </span>
+          </div>
+          <div class="ev-thumbs" id="th-${k}-${m.key}" style="margin-top:.5rem;">${thumbsHTML}</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  const shortLabel = entry.label.length > 55 ? entry.label.slice(0,55)+'…' : entry.label;
+
+  return `
+  <div style="border:1.5px solid var(--light);border-radius:12px;overflow:hidden;margin-bottom:.9rem;">
+    <div style="background:var(--navy);padding:.65rem 1rem;display:flex;align-items:center;gap:8px;">
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:700;color:white;text-transform:uppercase;letter-spacing:.05em;flex:1;">${shortLabel}</span>
+      <span style="font-size:.7rem;font-weight:700;color:rgba(255,255,255,.6);background:rgba(255,255,255,.1);border-radius:20px;padding:2px 9px;" id="ev-hdr-cnt-${k}">${totalImgs} foto${totalImgs!==1?'s':''}</span>
+    </div>
+    <div style="padding:.9rem;display:flex;flex-wrap:wrap;gap:.7rem;">${momentsHTML}</div>
+  </div>`;
+}
+
+/* ── Load images from file input ── */
+function evLoad(input, actKey, moment) {
+  const files = Array.from(input.files);
+  let pending = files.filter(f => f.type.startsWith('image/')).length;
+  if (!pending) return;
+  files.forEach(file => {
+    if (!file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      evStore[actKey].images[moment].push(e.target.result);
+      refreshActivityEv(actKey, moment);
+      if (--pending === 0) updateEvTotalBadge();
+    };
+    reader.readAsDataURL(file);
+  });
+  input.value = '';
+}
+
+/* ── Delete one image ── */
+function evDelete(actKey, moment, idx) {
+  evStore[actKey].images[moment].splice(idx, 1);
+  refreshActivityEv(actKey, moment);
+  updateEvTotalBadge();
+}
+
+/* ── Refresh thumbnails + counts for one activity+moment ── */
+function refreshActivityEv(actKey, moment) {
+  const imgs = evStore[actKey].images[moment];
+  const th   = document.getElementById('th-' + actKey + '-' + moment);
+  const cnt  = document.getElementById('cnt-' + actKey + '-' + moment);
+  const hdr  = document.getElementById('ev-hdr-cnt-' + actKey);
+
+  if (th) {
+    th.innerHTML = imgs.map((src, idx) => `
+      <div class="ev-thumb">
+        <img src="${src}" alt="Evidencia ${idx+1}">
+        <button class="ev-del" onclick="evDelete('${actKey}','${moment}',${idx})" title="Eliminar">✕</button>
+      </div>`).join('');
+  }
+  if (cnt) cnt.textContent = imgs.length + (imgs.length!==1?' fotos':' foto');
+
+  if (hdr) {
+    const total = MOMENTS.reduce((s,m) => s + evStore[actKey].images[m.key].length, 0);
+    hdr.textContent = total + (total!==1?' fotos':' foto');
+  }
+}
+
+/* ── Total across all activities ── */
+function totalEv() {
+  return Object.values(evStore).reduce((sum, entry) =>
+    sum + MOMENTS.reduce((s,m) => s + entry.images[m.key].length, 0), 0);
+}
+
+function updateEvTotalBadge() {
+  const t = totalEv();
+  const badge = document.getElementById('ev-total-badge');
+  if (badge) badge.textContent = t + (t!==1?' fotos en total':' foto en total');
+}
+
+/* ── Drag/drop handlers ── */
+function evDragOver(e, actKey, moment) {
+  e.preventDefault();
+  e.currentTarget.classList.add('dragover');
+}
+function evDragLeave(e, actKey, moment) {
+  e.currentTarget.classList.remove('dragover');
+}
+function evDrop(e, actKey, moment) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('dragover');
+  const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = ev => {
+      evStore[actKey].images[moment].push(ev.target.result);
+      refreshActivityEv(actKey, moment);
+      updateEvTotalBadge();
+    };
+    reader.readAsDataURL(file);
+  });
 }
 
 /* ═══════════════════════════════════════
@@ -1446,7 +1852,7 @@ function buildPdfHTML() {
     <!-- HEADER -->
     <div class="pdf-header" style="text-align:center;border-bottom:3px solid #0f1f3d;padding-bottom:12px;margin-bottom:16px">
       <div class="pdf-title" style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:#0f1f3d;text-transform:uppercase;letter-spacing:.06em;line-height:1.1;margin-bottom:6px">COMPROBANTE DE MANTENIMIENTO<br>Y SERVICIOS</div>
-      <div style="display:inline-block;background:#d32f2f;color:white;font-size:11px;font-weight:700;padding:3px 12px;border-radius:4px;letter-spacing:.04em;margin-bottom:4px">🚨 EMERGENCIAS 24 HORAS &nbsp;· &nbsp;312 3123420</div>
+      <div style="display:inline-block;background:#d32f2f;color:white;font-size:11px;font-weight:700;padding:3px 12px;border-radius:4px;letter-spacing:.04em;margin-bottom:4px">📞 318 411 3196 · 311 512 2624 · infosimasas@gmail.com</div>
       <div style="font-size:9px;color:#6b7a99;line-height:1.6;margin-top:4px">
         Instalación / Modernización / Reparación / Asesorías e Interventorías / Importadores Directos<br>
         Venta y Fabricación de Repuestos / Equipos Nuevos · Puertas Automáticas / Aires Acondicionados / Bombas hidráulicas / Motobombas y Equipos<br>
@@ -1665,7 +2071,7 @@ function buildPdfInnerHTML() {
   <!-- HEADER -->
   <div style="text-align:center;border-bottom:3px solid #0f1f3d;padding-bottom:10px;margin-bottom:14px;">
     <div style="font-size:20px;font-weight:900;color:#0f1f3d;text-transform:uppercase;letter-spacing:.04em;line-height:1.1;">COMPROBANTE DE MANTENIMIENTO Y SERVICIOS</div>
-    <div style="display:inline-block;background:#d32f2f;color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:4px;margin:6px 0 4px;">🚨 EMERGENCIAS 24 HORAS · 312 3123420</div>
+    <div style="display:inline-block;background:#d32f2f;color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:4px;margin:6px 0 4px;">📞 318 411 3196 · 311 512 2624 · infosimasas@gmail.com</div>
     <div style="font-size:8.5px;color:#6b7a99;line-height:1.6;margin-top:3px;">
       Instalación / Modernización / Reparación / Asesorías e Interventorías / Importadores Directos<br>
       Venta y Fabricación de Repuestos / Equipos Nuevos · Puertas Automáticas / Aires Acondicionados / Bombas hidráulicas / Motobombas<br>
@@ -1801,6 +2207,10 @@ function buildJsPDF() {
     text: act,
     checked: !!document.getElementById('act-'+i)?.checked
   }));
+  // Otras actividades
+  const otrasText = (document.getElementById('otras-textarea')?.value || '').trim();
+  const otrasOpen = document.getElementById('otras-area')?.classList.contains('open');
+  const otrasActiva = otrasOpen && otrasText.length > 0;
   const sigCliente = sigPads['cliente'].isEmpty() ? null : sigPads['cliente'].toDataURL('image/png');
   const sigTecnico = sigPads['tecnico'].isEmpty() ? null : sigPads['tecnico'].toDataURL('image/png');
 
@@ -1889,7 +2299,7 @@ function buildJsPDF() {
   doc.setFont('helvetica','bold');
   doc.setFontSize(15);
   doc.setTextColor(15,31,61);
-  doc.text('COMPROBANTE DE MANTENIMIENTO Y SERVICIOS', PW/2, y+4, {align:'center'});
+  doc.text('SIMASAS · COMPROBANTE DE MANTENIMIENTO Y SERVICIOS', PW/2, y+4, {align:'center'});
   y += 9;
 
   // Emergency bar
@@ -1898,7 +2308,7 @@ function buildJsPDF() {
   doc.setFont('helvetica','bold');
   doc.setFontSize(8.5);
   doc.setTextColor(255,255,255);
-  doc.text('EMERGENCIAS 24 HORAS  ·  312 3123420', PW/2, y+4.2, {align:'center'});
+  doc.text('318 411 3196  ·  311 512 2624  ·  infosimasas@gmail.com', PW/2, y+4.2, {align:'center'});
   y += 8;
 
   // Tagline
@@ -2074,6 +2484,275 @@ function buildJsPDF() {
     PW/2, y+4, {align:'center'}
   );
 
+  // ── OTRAS ACTIVIDADES (append to last page if present) ────────────
+  if (otrasActiva) {
+    checkPage(20);
+    sectionBar('Otras Actividades Realizadas');
+    doc.setFont('helvetica','normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(26,35,64);
+    const otrasLines = doc.splitTextToSize(otrasText, CW - 4);
+    doc.text(otrasLines, ML + 2, y);
+    y += otrasLines.length * 4.5 + 4;
+  }
+
+  // ══════════════════════════════════════════════════════════
+  // PÁGINA 2+: EVIDENCIAS POR ACTIVIDAD
+  // Grid perfectamente alineado con escalado proporcional
+  // ══════════════════════════════════════════════════════════
+  const activeEvKeys = Object.keys(evStore).filter(k =>
+    MOMENTS.some(m => evStore[k].images[m.key].length > 0)
+  );
+
+  if (activeEvKeys.length > 0) {
+
+    // ── Layout constants ──────────────────────────────────
+    const COLS        = 3;          // images per row
+    const GAP         = 4;          // mm gap between cells
+    const CELL_W      = (CW - GAP * (COLS - 1)) / COLS;  // ~60.67mm
+    const CAPTION_H   = 6;          // mm for caption bar
+    const CELL_H      = CELL_W * 0.72 + CAPTION_H;       // ~49.7mm (4:3 ish)
+    const IMG_H       = CELL_H - CAPTION_H;               // image area only
+    const PAGE_BOTTOM = 284;
+    const PAGE_TOP    = 10;
+
+    const momentColors = {
+      antes:   { r:180, g:100, b:0   },
+      durante: { r:30,  g:77,  b:183 },
+      despues: { r:22,  g:130, b:60  }
+    };
+    const momentLabels = { antes:'ANTES', durante:'DURANTE', despues:'DESPUÉS' };
+
+    // ── Helper: get natural image dimensions from data URL ─
+    // We load into an off-screen Image to read naturalWidth/Height.
+    // Since PDF generation is synchronous in jsPDF, we pre-compute
+    // all image aspect ratios BEFORE starting the PDF page.
+    // (We use cached HTMLImageElement decode via canvas — sync via preloading)
+    function getImgDims(src) {
+      // jsPDF addImage accepts dataURL; to get natural dims we use a canvas trick
+      // but that requires async. Instead we use the embedded base64 to read the
+      // JPEG/PNG dimensions from the header bytes (fast, sync).
+      try {
+        const b64 = src.split(',')[1];
+        const bin = atob(b64.substring(0, 32));  // only need first bytes
+        const bytes = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+
+        // JPEG: FF D8 FF — dimensions at SOF0 (0xC0) marker
+        if (bytes[0] === 0xFF && bytes[1] === 0xD8) {
+          // Parse JPEG segments to find SOF
+          const full = atob(b64);
+          const all  = new Uint8Array(full.length);
+          for (let i = 0; i < full.length; i++) all[i] = full.charCodeAt(i);
+          let pos = 2;
+          while (pos < all.length - 8) {
+            if (all[pos] !== 0xFF) break;
+            const marker = all[pos+1];
+            const segLen = (all[pos+2] << 8) | all[pos+3];
+            if ((marker >= 0xC0 && marker <= 0xC3) || (marker >= 0xC5 && marker <= 0xC7)) {
+              const h = (all[pos+5] << 8) | all[pos+6];
+              const w = (all[pos+7] << 8) | all[pos+8];
+              if (w > 0 && h > 0) return { w, h };
+            }
+            pos += 2 + segLen;
+          }
+        }
+        // PNG: 89 50 4E 47 — width at bytes 16-19, height at 20-23
+        if (bytes[0] === 0x89 && bytes[1] === 0x50) {
+          const full = atob(b64);
+          const all  = new Uint8Array(full.length);
+          for (let i = 0; i < full.length; i++) all[i] = full.charCodeAt(i);
+          const w = (all[16]<<24)|(all[17]<<16)|(all[18]<<8)|all[19];
+          const h = (all[20]<<24)|(all[21]<<16)|(all[22]<<8)|all[23];
+          if (w > 0 && h > 0) return { w, h };
+        }
+      } catch(e) {}
+      return { w: 4, h: 3 }; // fallback 4:3
+    }
+
+    // ── Helper: compute fit-inside box dimensions (cover = false → letterbox) ──
+    function fitInBox(natW, natH, boxW, boxH) {
+      const scale = Math.min(boxW / natW, boxH / natH);
+      const fw = natW * scale;
+      const fh = natH * scale;
+      const ox = (boxW - fw) / 2;   // offset to center
+      const oy = (boxH - fh) / 2;
+      return { fw, fh, ox, oy };
+    }
+
+    // ── Helper: draw one image cell ──────────────────────────────
+    function drawImgCell(src, cx, cy, color, caption) {
+      const { r, g, b } = color;
+
+      // Outer border (very light)
+      doc.setDrawColor(208, 217, 238);
+      doc.setFillColor(248, 250, 253);
+      doc.setLineWidth(0.25);
+      doc.roundedRect(cx, cy, CELL_W, CELL_H, 1, 1, 'FD');
+
+      // Image area background
+      doc.setFillColor(240, 242, 248);
+      doc.rect(cx + 0.25, cy + 0.25, CELL_W - 0.5, IMG_H - 0.25, 'F');
+
+      // Get natural dimensions and compute fit
+      const { w: natW, h: natH } = getImgDims(src);
+      const { fw, fh, ox, oy } = fitInBox(natW, natH, CELL_W - 1, IMG_H - 0.5);
+
+      // Draw image centered in cell
+      const imgX = cx + 0.5 + ox;
+      const imgY = cy + 0.25 + oy;
+      try {
+        doc.addImage(src, 'JPEG', imgX, imgY, fw, fh);
+      } catch(e1) {
+        try { doc.addImage(src, 'PNG', imgX, imgY, fw, fh); } catch(e2) {
+          // Placeholder if image fails
+          doc.setFont('helvetica','normal');
+          doc.setFontSize(7);
+          doc.setTextColor(180,180,180);
+          doc.text('Imagen no disponible', cx + CELL_W/2, cy + IMG_H/2, {align:'center'});
+        }
+      }
+
+      // Caption bar (colored)
+      doc.setFillColor(r, g, b);
+      doc.rect(cx, cy + IMG_H, CELL_W, CAPTION_H, 'F');
+      // Round bottom corners manually
+      doc.setFillColor(r, g, b);
+      doc.roundedRect(cx, cy + IMG_H, CELL_W, CAPTION_H, 0, 1, 'F');
+
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(6);
+      doc.setTextColor(255, 255, 255);
+      doc.text(caption, cx + CELL_W / 2, cy + IMG_H + CAPTION_H - 1.8, { align: 'center' });
+    }
+
+    // ── Helper: draw a row of images (up to COLS), returns row height ──
+    function drawRow(imgs, startIdx, cy, color, momentLabel) {
+      const count = Math.min(COLS, imgs.length - startIdx);
+      for (let c = 0; c < count; c++) {
+        const cx = ML + c * (CELL_W + GAP);
+        const caption = momentLabel + '  ·  Foto ' + (startIdx + c + 1);
+        drawImgCell(imgs[startIdx + c], cx, cy, color, caption);
+      }
+      return CELL_H;
+    }
+
+    // ── Helper: section label bar ───────────────────────────────
+    function drawSectionBar(text, cy, fillRGB) {
+      const [r,g,b] = fillRGB;
+      doc.setFillColor(r, g, b);
+      doc.roundedRect(ML, cy, CW, 6, 0.8, 0.8, 'F');
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(7.5);
+      doc.setTextColor(255, 255, 255);
+      doc.text(text, ML + 3, cy + 4);
+      return 7.5; // height consumed
+    }
+
+    // ── Helper: check page break, add page if needed ─────────────
+    function evCheckPage(needed) {
+      if (ey + needed > PAGE_BOTTOM) {
+        doc.addPage();
+        ey = PAGE_TOP;
+      }
+    }
+
+    // ══ START EVIDENCIAS — continúa en página actual si hay espacio ═══
+    // 'y' es la posición actual al final de la hoja 1.
+    // Cabecera de evidencias necesita ~30mm. Si no caben, nueva página.
+    if (y + 30 > PAGE_BOTTOM) { doc.addPage(); y = PAGE_TOP; }
+    let ey = y + 4;   // pequeño respiro después del footer de hoja 1
+
+    // Page header
+    doc.setFillColor(15, 31, 61);
+    doc.roundedRect(ML, ey, CW, 10, 1, 1, 'F');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(13);
+    doc.setTextColor(255, 255, 255);
+    doc.text('EVIDENCIAS FOTOGRÁFICAS', PW / 2, ey + 4.5, { align: 'center' });
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7);
+    doc.setTextColor(180, 200, 235);
+    doc.text('Organizadas por actividad  ·  Antes · Durante · Después del servicio', PW / 2, ey + 8, { align: 'center' });
+    ey += 13;
+
+    // Info strip
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(107, 122, 153);
+    doc.text('Edificio: ' + edificio + '   ·   Fecha: ' + fecha + '   ·   Técnico: ' + tecnico, PW / 2, ey, { align: 'center' });
+    ey += 5;
+    doc.setDrawColor(208, 217, 238);
+    doc.setLineWidth(0.3);
+    doc.line(ML, ey, ML + CW, ey);
+    ey += 5;
+
+    // ══ Loop over each activity with evidence ════════════════════
+    activeEvKeys.forEach((actKey, aIdx) => {
+      const entry    = evStore[actKey];
+      const totalA   = MOMENTS.reduce((s, m) => s + entry.images[m.key].length, 0);
+      const actLabel = entry.label.length > 75 ? entry.label.slice(0, 75) + '…' : entry.label;
+
+      // Activity header
+      evCheckPage(10);
+      doc.setFillColor(26, 58, 107);
+      doc.roundedRect(ML, ey, CW, 8, 1, 1, 'F');
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(9);
+      doc.setTextColor(255, 255, 255);
+      doc.text('Actividad ' + (aIdx + 1) + ': ' + actLabel, ML + 3, ey + 5.5);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(7);
+      doc.setTextColor(160, 190, 235);
+      doc.text(totalA + (totalA !== 1 ? ' fotos' : ' foto'), ML + CW - 2, ey + 5.5, { align: 'right' });
+      ey += 10;
+
+      // ── Each moment ──────────────────────────────────────────
+      MOMENTS.forEach(m => {
+        const imgs = entry.images[m.key];
+        if (imgs.length === 0) return;
+
+        const mc = momentColors[m.key];
+        const ml = momentLabels[m.key];
+
+        // Moment label bar
+        evCheckPage(8);
+        ey += drawSectionBar(
+          ml + ' DEL SERVICIO  (' + imgs.length + (imgs.length !== 1 ? ' fotos' : ' foto') + ')',
+          ey,
+          [mc.r, mc.g, mc.b]
+        );
+        ey += 2;
+
+        // ── Rows of images ──────────────────────────────────────
+        for (let rowStart = 0; rowStart < imgs.length; rowStart += COLS) {
+          evCheckPage(CELL_H + 3);
+          drawRow(imgs, rowStart, ey, mc, ml);
+          ey += CELL_H + GAP;
+        }
+        ey += 3; // space after moment
+      });
+
+      // Divider between activities
+      evCheckPage(6);
+      doc.setDrawColor(208, 217, 238);
+      doc.setLineWidth(0.2);
+      doc.line(ML, ey, ML + CW, ey);
+      ey += 6;
+    });
+
+    // Footer
+    if (ey + 8 < PAGE_BOTTOM) {
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(6.5);
+      doc.setTextColor(170, 170, 170);
+      doc.text(
+        'Evidencias · Comprobante de Mantenimiento y Servicios · ' + new Date().toLocaleString('es-CO'),
+        PW / 2, ey + 4, { align: 'center' }
+      );
+    }
+  }
+
   return doc.output('blob');
 }
 
@@ -2119,7 +2798,7 @@ function shareWhatsApp() {
     `✅ *Actividades:* ${actCount} de ${ACTIVITIES.length}\n` +
     `👨‍🔧 *Técnico:* ${tecnico}\n\n` +
     `_El PDF fue descargado en su dispositivo. Adjúntelo a este chat._\n` +
-    `📞 Emergencias 24 h: 312 3123420`;
+    `📞 318 411 3196 · 311 512 2624  |  infosimasas@gmail.com`;
 
   setTimeout(() => {
     window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
@@ -2156,7 +2835,7 @@ function shareEmail() {
     `Tipo de servicio: ${tipoServ}\nActividades realizadas: ${actCount} de ${ACTIVITIES.length}\n` +
     `Técnico: ${tecnico}\n\nObservaciones:\n${obs}\n\n` +
     `NOTA: El archivo PDF fue descargado en su dispositivo. Por favor adjúntelo a este correo antes de enviarlo.\n\n` +
-    `Emergencias 24 horas: 312 3123420`
+    `SIMASAS: 318 411 3196 · 311 512 2624 · infosimasas@gmail.com`
   );
 
   setTimeout(() => {
@@ -2180,6 +2859,15 @@ function resetForm() {
   ['btn-wa','btn-email','btn-dl'].forEach(id => {
     document.getElementById(id).disabled = true;
   });
+  // Clear evidencias store
+  Object.keys(evStore).forEach(k => delete evStore[k]);
+  rebuildEvSection();
+  updateEvTotalBadge();
+  // Clear otras
+  const otrasArea = document.getElementById('otras-area');
+  if (otrasArea) otrasArea.classList.remove('open');
+  const otrasTxt = document.getElementById('otras-textarea');
+  if (otrasTxt) otrasTxt.value = '';
   showToast('Formulario limpiado', 'success');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
