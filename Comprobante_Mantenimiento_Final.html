@@ -1151,6 +1151,135 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
   padding: 2px 9px;
   margin-left: auto;
 }
+
+/* ═══════════════════════════════
+   CAMERA / GALLERY BUTTONS
+═══════════════════════════════ */
+.ev-cam-btns {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: .55rem;
+}
+.ev-cam-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: .55rem .6rem;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .8rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid;
+  transition: all .18s;
+  background: white;
+  min-height: 44px;
+}
+.ev-cam-btn:active { transform: scale(.97); }
+@media (max-width: 600px) {
+  .ev-cam-btn { font-size: .75rem; padding: .6rem .4rem; }
+}
+
+/* ═══════════════════════════════
+   DRAFT BANNER
+═══════════════════════════════ */
+#draft-banner {
+  display: none;
+  background: #fffbeb;
+  border: 1.5px solid #fcd34d;
+  border-radius: 12px;
+  padding: .9rem 1.1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+#draft-banner.show { display: flex; }
+#draft-banner .db-icon { font-size: 1.4rem; }
+#draft-banner .db-text { flex: 1; min-width: 140px; }
+#draft-banner .db-text strong { display: block; font-size: .88rem; color: #92400e; }
+#draft-banner .db-text span { font-size: .76rem; color: #b45309; }
+#draft-banner .db-btns { display: flex; gap: .5rem; flex-wrap: wrap; }
+.btn-draft-restore {
+  background: #f59e0b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: .45rem .9rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .18s;
+}
+.btn-draft-restore:hover { background: #d97706; }
+.btn-draft-discard {
+  background: transparent;
+  color: #6b7a99;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: .45rem .9rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .18s;
+}
+.btn-draft-discard:hover { background: #fff0f0; color: var(--red); border-color: var(--red); }
+
+/* ═══════════════════════════════
+   PROGRESS STEPS
+═══════════════════════════════ */
+#progress-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: .85rem 1.2rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+.prog-step {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--gray);
+  padding: .28rem .5rem;
+  border-radius: 8px;
+  transition: all .2s;
+  flex-shrink: 0;
+}
+.prog-step.done { color: #15803d; background: #f0fdf4; }
+.prog-step.active { color: var(--blue); background: #eff6ff; }
+.prog-sep { color: var(--border); font-size: .7rem; }
+
+/* ═══════════════════════════════
+   GUARDAR BORRADOR BUTTON
+═══════════════════════════════ */
+.btn-save-draft {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1.5px solid #fcd34d;
+  border-radius: var(--r);
+  padding: .65rem 1.1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .86rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all .18s;
+  white-space: nowrap;
+}
+.btn-save-draft:hover { background: #fde68a; border-color: #f59e0b; }
+.btn-save-draft.saved { background: #f0fdf4; color: #15803d; border-color: #86efac; }
 </style>
 </head>
 
@@ -1191,6 +1320,30 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
   </div>
 
   <div class="progress-strip"></div>
+
+  <!-- ═══ DRAFT RECOVERY BANNER ═══ -->
+  <div id="draft-banner">
+    <span class="db-icon">💾</span>
+    <div class="db-text">
+      <strong>Borrador guardado encontrado</strong>
+      <span id="draft-banner-ts">Guardado recientemente</span>
+    </div>
+    <div class="db-btns">
+      <button class="btn-draft-restore" onclick="restoreDraft()">↩ Recuperar borrador</button>
+      <button class="btn-draft-discard" onclick="discardDraft()">✕ Descartar</button>
+    </div>
+  </div>
+
+  <!-- ═══ PROGRESS STEPS ═══ -->
+  <div id="progress-card">
+    <span class="prog-step" id="ps-datos">⬜ Datos generales</span>
+    <span class="prog-sep">›</span>
+    <span class="prog-step" id="ps-tipo">⬜ Tipo de servicio</span>
+    <span class="prog-sep">›</span>
+    <span class="prog-step" id="ps-act">⬜ Actividades</span>
+    <span class="prog-sep">›</span>
+    <span class="prog-step" id="ps-firma">⬜ Firma técnico</span>
+  </div>
 
   <!-- ═══ CARD 1: Datos generales ═══ -->
   <div class="card">
@@ -1448,7 +1601,8 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
       </div>
     </div>
 
-    <div style="display:flex;justify-content:flex-end;margin-top:.5rem">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.5rem;flex-wrap:wrap;gap:.5rem">
+      <button class="btn-save-draft" id="btn-save-draft" onclick="saveDraft(true)">💾 Guardar borrador</button>
       <button class="btn btn-outline" onclick="resetForm()" style="font-size:.8rem;padding:.5rem 1rem">↺ Limpiar formulario</button>
     </div>
     <p style="font-size:.74rem;color:var(--gray);margin-top:.8rem;line-height:1.5">
@@ -1618,21 +1772,25 @@ function buildActivityEvHTML(k) {
           <span style="font-size:.8rem;font-weight:700;color:${m.color};text-transform:uppercase;letter-spacing:.06em;">${m.icon} ${m.label}</span>
           <span style="margin-left:auto;font-size:.68rem;font-weight:700;color:${m.color};background:white;border:1px solid ${m.border};border-radius:20px;padding:1px 7px;" id="cnt-${k}-${m.key}">${count} foto${count!==1?'s':''}</span>
         </div>
-        <div class="ev-drop-zone" style="padding:.7rem;border-color:${m.border};"
-             onclick="document.getElementById('fi-${k}-${m.key}').click()"
+        <!-- Hidden file inputs -->
+        <input type="file" id="cam-${k}-${m.key}" accept="image/*" capture="environment" multiple style="display:none" onchange="evLoad(this,'${k}','${m.key}')">
+        <input type="file" id="gal-${k}-${m.key}" accept="image/*" multiple style="display:none" onchange="evLoad(this,'${k}','${m.key}')">
+        <!-- Camera + Gallery buttons -->
+        <div class="ev-cam-btns">
+          <button class="ev-cam-btn" style="color:${m.color};border-color:${m.border};"
+                  onclick="document.getElementById('cam-${k}-${m.key}').click()">📷 Cámara</button>
+          <button class="ev-cam-btn" style="color:${m.color};border-color:${m.border};"
+                  onclick="document.getElementById('gal-${k}-${m.key}').click()">🖼️ Galería</button>
+        </div>
+        <!-- Drag/drop zone for desktop -->
+        <div class="ev-drop-zone" style="padding:.5rem .7rem;border-color:${m.border};cursor:default;"
              ondragover="evDragOver(event,'${k}','${m.key}')"
              ondragleave="evDragLeave(event,'${k}','${m.key}')"
              ondrop="evDrop(event,'${k}','${m.key}')">
-          <input type="file" id="fi-${k}-${m.key}" accept="image/*" multiple
-                 onchange="evLoad(this,'${k}','${m.key}')">
-          <div class="ev-drop-label" style="gap:.2rem;" onclick="event.stopPropagation()">
-            <span class="ev-drop-icon" style="font-size:1.2rem;">🖼️</span>
-            <span class="ev-drop-text" style="font-size:.72rem;">
-              <strong style="color:${m.color};">Agregar fotos</strong><br>
-              Clic o arrastre aquí
-            </span>
+          <div class="ev-drop-label" style="gap:.15rem;">
+            <span class="ev-drop-text" style="font-size:.68rem;color:#aaa;">Arrastre fotos aquí (PC)</span>
           </div>
-          <div class="ev-thumbs" id="th-${k}-${m.key}" style="margin-top:.5rem;">${thumbsHTML}</div>
+          <div class="ev-thumbs" id="th-${k}-${m.key}" style="margin-top:.4rem;">${thumbsHTML}</div>
         </div>
       </div>`;
   }).join('');
@@ -2868,6 +3026,12 @@ function resetForm() {
   if (otrasArea) otrasArea.classList.remove('open');
   const otrasTxt = document.getElementById('otras-textarea');
   if (otrasTxt) otrasTxt.value = '';
+  // Clear draft storage
+  localStorage.removeItem('simasas_draft_fields');
+  localStorage.removeItem('simasas_draft_ts');
+  idbClear(STORE_IMG).catch(()=>{});
+  document.getElementById('draft-banner').classList.remove('show');
+  updateProgress();
   showToast('Formulario limpiado', 'success');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -2894,6 +3058,327 @@ function updateDateDisplay() {
 document.getElementById('previewModal').addEventListener('click', function(e) {
   if (e.target === this) closePreview();
 });
+
+/* ═══════════════════════════════════════
+   INDEXEDDB MODULE
+   Stores images (large base64 data)
+═══════════════════════════════════════ */
+const DB_NAME    = 'simasas_mant_db';
+const DB_VER     = 1;
+const STORE_IMG  = 'draft_images';   // key: actKey+moment string, val: array of dataURLs
+const STORE_META = 'draft_meta';     // key: 'ts', val: timestamp ISO string
+let _db = null;
+
+function openDB() {
+  return new Promise((resolve, reject) => {
+    if (_db) { resolve(_db); return; }
+    const req = indexedDB.open(DB_NAME, DB_VER);
+    req.onupgradeneeded = e => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains(STORE_IMG))  db.createObjectStore(STORE_IMG);
+      if (!db.objectStoreNames.contains(STORE_META)) db.createObjectStore(STORE_META);
+    };
+    req.onsuccess = e => { _db = e.target.result; resolve(_db); };
+    req.onerror   = e => reject(e.target.error);
+  });
+}
+
+function idbPut(store, key, val) {
+  return openDB().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction(store, 'readwrite');
+    tx.objectStore(store).put(val, key);
+    tx.oncomplete = resolve;
+    tx.onerror = e => reject(e.target.error);
+  }));
+}
+
+function idbGet(store, key) {
+  return openDB().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction(store, 'readonly');
+    const req = tx.objectStore(store).get(key);
+    req.onsuccess = e => resolve(e.target.result);
+    req.onerror   = e => reject(e.target.error);
+  }));
+}
+
+function idbGetAll(store) {
+  return openDB().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction(store, 'readonly');
+    const results = {};
+    tx.objectStore(store).openCursor().onsuccess = e => {
+      const cursor = e.target.result;
+      if (cursor) { results[cursor.key] = cursor.value; cursor.continue(); }
+      else resolve(results);
+    };
+    tx.onerror = e => reject(e.target.error);
+  }));
+}
+
+function idbClear(store) {
+  return openDB().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction(store, 'readwrite');
+    tx.objectStore(store).clear();
+    tx.oncomplete = resolve;
+    tx.onerror = e => reject(e.target.error);
+  }));
+}
+
+/* ═══════════════════════════════════════
+   AUTO-SAVE  (debounced 600ms)
+═══════════════════════════════════════ */
+const FORM_FIELD_IDS = [
+  'edificio','direccion','ciudad','marca','tipo-equipo','id-equipo',
+  'nombre-tecnico','cc-tecnico','nombre-recibe','observaciones',
+  'fecha-dia','fecha-mes','fecha-ano'
+];
+
+let _autoSaveTimer = null;
+
+function scheduleAutoSave() {
+  clearTimeout(_autoSaveTimer);
+  _autoSaveTimer = setTimeout(() => saveDraft(false), 600);
+}
+
+// Wire auto-save to all form fields
+(function wireAutoSave() {
+  FORM_FIELD_IDS.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', scheduleAutoSave);
+    if (el) el.addEventListener('change', scheduleAutoSave);
+  });
+  // Radio/checkboxes
+  document.querySelectorAll('input[name="tipo-servicio"]').forEach(el =>
+    el.addEventListener('change', scheduleAutoSave)
+  );
+  // Activity checkboxes (delegated)
+  document.getElementById('activities-grid').addEventListener('change', scheduleAutoSave);
+  // Otras textarea
+  document.getElementById('otras-textarea').addEventListener('input', scheduleAutoSave);
+})();
+
+/* ═══════════════════════════════════════
+   SAVE DRAFT
+═══════════════════════════════════════ */
+async function saveDraft(manual = false) {
+  try {
+    // 1. Form fields → localStorage
+    const fields = {};
+    FORM_FIELD_IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) fields[id] = el.value;
+    });
+    // Radio
+    const tipoServEl = document.querySelector('input[name="tipo-servicio"]:checked');
+    fields['_tipoServicio'] = tipoServEl ? tipoServEl.value : '';
+    // Checkboxes
+    const actChecked = [];
+    ACTIVITIES.forEach((_, i) => {
+      const cb = document.getElementById('act-' + i);
+      if (cb && cb.checked) actChecked.push(i);
+    });
+    fields['_actChecked'] = actChecked;
+    // Otras
+    fields['_otrasOpen'] = document.getElementById('otras-area').classList.contains('open');
+    // Signatures as dataURL
+    fields['_sigCliente'] = sigPads['cliente'].isEmpty() ? '' : sigPads['cliente'].toDataURL('image/png');
+    fields['_sigTecnico'] = sigPads['tecnico'].isEmpty() ? '' : sigPads['tecnico'].toDataURL('image/png');
+
+    localStorage.setItem('simasas_draft_fields', JSON.stringify(fields));
+    localStorage.setItem('simasas_draft_ts', new Date().toISOString());
+
+    // 2. Images → IndexedDB
+    await idbClear(STORE_IMG);
+    for (const actKey of Object.keys(evStore)) {
+      for (const m of MOMENTS) {
+        const imgs = evStore[actKey].images[m.key];
+        if (imgs.length > 0) {
+          await idbPut(STORE_IMG, actKey + '__' + m.key, {
+            actKey, moment: m.key, label: evStore[actKey].label, imgs
+          });
+        }
+      }
+    }
+    await idbPut(STORE_META, 'ts', new Date().toISOString());
+
+    if (manual) {
+      const btn = document.getElementById('btn-save-draft');
+      btn.classList.add('saved');
+      btn.innerHTML = '✅ Borrador guardado';
+      setTimeout(() => {
+        btn.classList.remove('saved');
+        btn.innerHTML = '💾 Guardar borrador';
+      }, 2200);
+      showToast('Borrador guardado', 'success');
+    }
+  } catch(e) {
+    console.warn('saveDraft error', e);
+    if (manual) showToast('Error al guardar borrador', 'error');
+  }
+}
+
+/* ═══════════════════════════════════════
+   RESTORE DRAFT
+═══════════════════════════════════════ */
+async function restoreDraft() {
+  try {
+    const raw = localStorage.getItem('simasas_draft_fields');
+    if (!raw) return;
+    const fields = JSON.parse(raw);
+
+    // Restore text fields
+    FORM_FIELD_IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && fields[id] !== undefined) el.value = fields[id];
+    });
+
+    // Restore tipo servicio radio
+    if (fields['_tipoServicio']) {
+      document.querySelectorAll('input[name="tipo-servicio"]').forEach(el => {
+        el.checked = (el.value === fields['_tipoServicio']);
+      });
+    }
+
+    // Restore activity checkboxes
+    if (fields['_actChecked']) {
+      ACTIVITIES.forEach((_, i) => {
+        const cb = document.getElementById('act-' + i);
+        if (cb) cb.checked = fields['_actChecked'].includes(i);
+      });
+    }
+
+    // Restore otras area
+    if (fields['_otrasOpen']) {
+      const area = document.getElementById('otras-area');
+      const toggleEl = area.previousElementSibling;
+      area.classList.add('open');
+    }
+
+    // Restore images from IndexedDB
+    const imgData = await idbGetAll(STORE_IMG);
+    Object.values(imgData).forEach(entry => {
+      const { actKey, moment, label, imgs } = entry;
+      if (!evStore[actKey]) {
+        evStore[actKey] = { label, images: { antes:[], durante:[], despues:[] } };
+      }
+      evStore[actKey].images[moment] = imgs;
+    });
+
+    // Restore signatures
+    if (fields['_sigCliente'] && !sigPads['cliente'].isEmpty() === false) {
+      try { sigPads['cliente'].fromDataURL(fields['_sigCliente']); document.getElementById('ph-cliente').style.opacity='0'; } catch(e){}
+    }
+    if (fields['_sigTecnico'] && !sigPads['tecnico'].isEmpty() === false) {
+      try { sigPads['tecnico'].fromDataURL(fields['_sigTecnico']); document.getElementById('ph-tecnico').style.opacity='0'; } catch(e){}
+    }
+
+    // Rebuild UI
+    updateCounter();  // rebuilds ev section
+    updateDateDisplay();
+
+    document.getElementById('draft-banner').classList.remove('show');
+    showToast('Borrador recuperado ✔', 'success');
+  } catch(e) {
+    console.warn('restoreDraft error', e);
+    showToast('Error al recuperar borrador', 'error');
+  }
+}
+
+/* ═══════════════════════════════════════
+   DISCARD DRAFT
+═══════════════════════════════════════ */
+function discardDraft() {
+  localStorage.removeItem('simasas_draft_fields');
+  localStorage.removeItem('simasas_draft_ts');
+  idbClear(STORE_IMG).catch(()=>{});
+  idbClear(STORE_META).catch(()=>{});
+  document.getElementById('draft-banner').classList.remove('show');
+  showToast('Borrador descartado');
+}
+
+/* ═══════════════════════════════════════
+   CHECK FOR DRAFT (called after login)
+═══════════════════════════════════════ */
+function checkForDraft() {
+  const ts = localStorage.getItem('simasas_draft_ts');
+  if (!ts) return;
+  const fields = localStorage.getItem('simasas_draft_fields');
+  if (!fields) return;
+  // Check if there's any meaningful data
+  try {
+    const f = JSON.parse(fields);
+    const hasData = FORM_FIELD_IDS.some(id => f[id] && f[id].toString().trim() !== '')
+                 || (f['_actChecked'] && f['_actChecked'].length > 0);
+    if (!hasData) return;
+  } catch(e) { return; }
+
+  const banner = document.getElementById('draft-banner');
+  const tsEl   = document.getElementById('draft-banner-ts');
+  try {
+    const d = new Date(ts);
+    tsEl.textContent = 'Guardado el ' + d.toLocaleDateString('es-CO') + ' a las ' + d.toLocaleTimeString('es-CO', {hour:'2-digit',minute:'2-digit'});
+  } catch(e) { tsEl.textContent = 'Guardado recientemente'; }
+  banner.classList.add('show');
+}
+
+/* ═══════════════════════════════════════
+   PROGRESS STEPS
+═══════════════════════════════════════ */
+function updateProgress() {
+  // Step 1: datos — edificio, direccion, ciudad filled
+  const s1 = ['edificio','direccion','ciudad'].every(id => document.getElementById(id)?.value.trim());
+  // Step 2: tipo de servicio selected
+  const s2 = !!document.querySelector('input[name="tipo-servicio"]:checked');
+  // Step 3: at least one activity checked
+  const s3 = document.querySelectorAll('#activities-grid input:checked').length > 0;
+  // Step 4: tecnico name + signature
+  const s4 = !!(document.getElementById('nombre-tecnico')?.value.trim())
+           && !sigPads['tecnico']?.isEmpty();
+
+  const steps = [
+    { id:'ps-datos', done: s1, label:'✅ Datos generales', pending:'⬜ Datos generales', active:'🔵 Datos generales' },
+    { id:'ps-tipo',  done: s2, label:'✅ Tipo de servicio', pending:'⬜ Tipo de servicio', active:'🔵 Tipo de servicio' },
+    { id:'ps-act',   done: s3, label:'✅ Actividades',      pending:'⬜ Actividades',      active:'🔵 Actividades' },
+    { id:'ps-firma', done: s4, label:'✅ Firma técnico',     pending:'⬜ Firma técnico',     active:'🔵 Firma técnico' },
+  ];
+
+  let firstIncomplete = null;
+  steps.forEach(s => {
+    const el = document.getElementById(s.id);
+    if (!el) return;
+    if (s.done) {
+      el.textContent = s.label;
+      el.className = 'prog-step done';
+    } else if (!firstIncomplete) {
+      el.textContent = s.active;
+      el.className = 'prog-step active';
+      firstIncomplete = s.id;
+    } else {
+      el.textContent = s.pending;
+      el.className = 'prog-step';
+    }
+  });
+}
+
+// Wire progress to relevant events
+(function wireProgress() {
+  ['edificio','direccion','ciudad','nombre-tecnico'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', updateProgress);
+  });
+  document.querySelectorAll('input[name="tipo-servicio"]').forEach(el =>
+    el.addEventListener('change', updateProgress)
+  );
+  document.getElementById('activities-grid').addEventListener('change', updateProgress);
+  // Signature pad strokes
+  ['cliente','tecnico'].forEach(id => {
+    const pad = sigPads[id];
+    if (pad) {
+      pad.addEventListener('endStroke', updateProgress);
+      pad.addEventListener('afterUpdateStroke', updateProgress);
+    }
+  });
+  updateProgress();
+})();
 </script>
 
 <script>
@@ -2904,6 +3389,8 @@ function checkPwd() {
   var inp = document.getElementById('pwdInput');
   if (val === 'Mantenimiento2026') {
     document.getElementById('pwd-overlay').classList.add('hidden');
+    // Check for saved draft after successful login
+    setTimeout(checkForDraft, 400);
   } else {
     err.textContent = 'Contraseña incorrecta. Intente nuevamente.';
     inp.classList.add('shake');
