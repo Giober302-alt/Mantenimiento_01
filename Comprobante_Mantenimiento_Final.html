@@ -17,12 +17,15 @@
    CSS VARIABLES & RESET
 ═══════════════════════════════ */
 :root {
-  --navy:    #0f1f3d;
-  --navy2:   #1a3060;
+  /* === SIMA M&Y SAS Brand Colors === */
+  --navy:    #1a2740;   /* logo dark navy */
+  --navy2:   #1f3366;   /* logo medium navy */
   --blue:    #1e4db7;
   --blue2:   #2563eb;
   --red:     #d32f2f;
-  --gold:    #f59e0b;
+  --gold:    #f9b800;   /* logo gold/yellow */
+  --gold2:   #d99e00;   /* darker gold for hover */
+  --gear:    #5c5c5c;   /* gear gray */
   --white:   #ffffff;
   --off:     #f4f6fb;
   --border:  #d0d9ee;
@@ -30,14 +33,14 @@
   --gray:    #6b7a99;
   --light:   #e8eef8;
   --r:       8px;
-  --shadow:  0 2px 12px rgba(15,31,61,.10);
-  --shadow2: 0 8px 32px rgba(15,31,61,.18);
+  --shadow:  0 2px 12px rgba(26,39,64,.12);
+  --shadow2: 0 8px 32px rgba(26,39,64,.20);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
   font-family: 'DM Sans', sans-serif;
-  background: linear-gradient(160deg, #0f1f3d 0%, #1a3060 40%, #1e4db7 100%);
+  background: linear-gradient(160deg, #131e33 0%, #1a2740 45%, #1f3366 100%);
   min-height: 100vh;
   padding: 1.5rem 1rem 4rem;
   color: var(--text);
@@ -820,7 +823,7 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 /* Progress indicator at top */
 .progress-strip {
   height: 3px;
-  background: linear-gradient(90deg, #2563eb, #f59e0b);
+  background: linear-gradient(90deg, #1a2740, #f9b800);
   border-radius: 2px;
   margin-bottom: 1.2rem;
 }
@@ -832,7 +835,7 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: linear-gradient(160deg, #0f1f3d 0%, #1a3060 45%, #1e4db7 100%);
+  background: linear-gradient(160deg, #131e33 0%, #1a2740 45%, #1f3366 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -854,8 +857,8 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #1e4db7, #d32f2f);
+  height: 4px;
+  background: linear-gradient(90deg, #f9b800, #1a2740, #f9b800);
   border-radius: 20px 20px 0 0;
 }
 .pwd-orb1 {
@@ -933,8 +936,8 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
   font-weight: 400;
 }
 .pwd-input:focus {
-  border-color: #f59e0b;
-  box-shadow: 0 0 0 3px rgba(245,158,11,.35);
+  border-color: #f9b800;
+  box-shadow: 0 0 0 3px rgba(249,184,0,.3);
 }
 .pwd-input.shake {
   border-color: #e53935;
@@ -955,23 +958,23 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 .pwd-btn {
   width: 100%;
   padding: .8rem;
-  background: linear-gradient(90deg, #1e4db7, #2563eb);
-  color: white;
+  background: linear-gradient(90deg, #f9b800, #d99e00);
+  color: #1a2740;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.05rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: .06em;
   text-transform: uppercase;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: all .18s;
-  box-shadow: 0 4px 16px rgba(30,77,183,.4);
+  box-shadow: 0 4px 16px rgba(249,184,0,.35);
 }
 .pwd-btn:hover {
-  background: linear-gradient(90deg, #1a3fa0, #1d58d8);
+  background: linear-gradient(90deg, #ffc700, #f9b800);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(30,77,183,.5);
+  box-shadow: 0 6px 20px rgba(249,184,0,.45);
 }
 .pwd-footer {
   font-size: .65rem;
@@ -1290,8 +1293,11 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
   <div class="pwd-orb1"></div>
   <div class="pwd-orb2"></div>
   <div class="pwd-box">
-    <div class="pwd-icon">🔧</div>
-    <div class="pwd-title">Mantenimiento<br>y Servicios</div>
+    <div style="margin-bottom:.8rem;display:flex;justify-content:center;">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgMTgwIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjE4MCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5zaW1hLXRleHQgeyBmb250LWZhbWlseTogIkFyaWFsIEJsYWNrIiwgIkltcGFjdCIsIHNhbnMtc2VyaWY7IGZvbnQtd2VpZ2h0OiA5MDA7IH0KICAgICAgLnN1Yi10ZXh0ICB7IGZvbnQtZmFtaWx5OiAiQXJpYWwiLCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogNzAwOyB9CiAgICAgIC50YWctdGV4dCAgeyBmb250LWZhbWlseTogIkFyaWFsIiwgc2Fucy1zZXJpZjsgZm9udC13ZWlnaHQ6IDcwMDsgbGV0dGVyLXNwYWNpbmc6IDNweDsgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CgogIDwhLS0gPT09IFNJTUEgdGV4dCA9PT0gLS0+CiAgPCEtLSBTIC0tPgogIDx0ZXh0IHg9IjgiIHk9IjExMiIgY2xhc3M9InNpbWEtdGV4dCIgZm9udC1zaXplPSI5NiIgZmlsbD0iI2ZmZmZmZiI+UzwvdGV4dD4KICA8IS0tIEkgLS0+CiAgPHRleHQgeD0iNzYiIHk9IjExMiIgY2xhc3M9InNpbWEtdGV4dCIgZm9udC1zaXplPSI5NiIgZmlsbD0iI2ZmZmZmZiI+STwvdGV4dD4KICA8IS0tIE0gLS0+CiAgPHRleHQgeD0iOTYiIHk9IjExMiIgY2xhc3M9InNpbWEtdGV4dCIgZm9udC1zaXplPSI5NiIgZmlsbD0iI2ZmZmZmZiI+TTwvdGV4dD4KICA8IS0tIEEgLS0+CiAgPHRleHQgeD0iMTkzIiB5PSIxMTIiIGNsYXNzPSJzaW1hLXRleHQiIGZvbnQtc2l6ZT0iOTYiIGZpbGw9IiNmZmZmZmYiPkE8L3RleHQ+CiAgPHBvbHlnb24gcG9pbnRzPSIyMzcsODggMjI0LDExMyAyNTAsMTEzIiBmaWxsPSIjZjliODAwIi8+CiAgPGxpbmUgeDE9IjgiIHkxPSIxMjAiIHgyPSIyNzgiIHkyPSIxMjAiIHN0cm9rZT0iI2Y5YjgwMCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPGxpbmUgeDE9IjgiIHkxPSIxMjQiIHgyPSIyNzgiIHkyPSIxMjQiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwuNCkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPGxpbmUgeDE9IjI4NCIgeTE9IjE1IiB4Mj0iMjg0IiB5Mj0iMTQ4IiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsLjUpIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8bGluZSB4MT0iOCIgeTE9IjE0MiIgeDI9IjM4IiB5Mj0iMTQyIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsLjcpIiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDx0ZXh0IHg9IjQ1IiB5PSIxNDciIGNsYXNzPSJzdWItdGV4dCIgZm9udC1zaXplPSIyMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwuOSkiPk0mYW1wO1kgU0FTPC90ZXh0PgogIDxsaW5lIHgxPSIyMDAiIHkxPSIxNDIiIHgyPSIyNzgiIHkyPSIxNDIiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwuNykiIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPGxpbmUgeDE9IjAiIHkxPSIxNjIiIHgyPSI0MiIgeTI9IjE2MiIgc3Ryb2tlPSIjZjliODAwIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8dGV4dCB4PSI0NSIgeT0iMTY2IiBjbGFzcz0idGFnLXRleHQiIGZvbnQtc2l6ZT0iOC41IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LC43KSI+U0VSVklDSU9TIElOVEVHUkFMRVMgWSBNQU5URU5JTUlFTlRPUzwvdGV4dD4KICA8bGluZSB4MT0iMjM4IiB5MT0iMTYyIiB4Mj0iMjgwIiB5Mj0iMTYyIiBzdHJva2U9IiNmOWI4MDAiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwYXRoIGQ9Ik0gNDU5LjMsNTAuMCBBIDgwLDgwIDAgMSwxIDMxNC44LDYyLjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwuNSkiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTSA0MjkuNjQsODkuNjMgQSA0MC4wMCw0MC4wMCAwIDAsMSA0MjkuODQsOTEuNDEgTCA0NDEuNzksOTAuMzQgQSA1Mi4wMCw1Mi4wMCAwIDAsMSA0NDEuNzksOTkuNjYgTCA0MjkuNzcsOTkuMzAgQSA0MC4wMCw0MC4wMCAwIDAsMSA0MjcuNDUsMTA5LjA1IEwgNDM4LjY4LDExMy4yNyBBIDUyLjAwLDUyLjAwIDAgMCwxIDQzNC42NCwxMjEuNjcgTCA0MjMuOTYsMTE2LjEzIEEgNDAuMDAsNDAuMDAgMCAwLDEgNDE3LjY0LDEyMy45MSBMIDQyNS45NCwxMzIuNTkgQSA1Mi4wMCw1Mi4wMCAwIDAsMSA0MTguNjUsMTM4LjQwIEwgNDExLjQzLDEyOC43NyBBIDQwLjAwLDQwLjAwIDAgMCwxIDQwMi4zNiwxMzMuMDQgTCA0MDYuMDcsMTQ0LjQ1IEEgNTIuMDAsNTIuMDAgMCAwLDEgMzk2Ljk4LDE0Ni41MyBMIDM5NC42NiwxMzQuNzMgQSA0MC4wMCw0MC4wMCAwIDAsMSAzODQuNjMsMTM0LjY0IEwgMzgzLjAyLDE0Ni41MyBBIDUyLjAwLDUyLjAwIDAgMCwxIDM3My45MywxNDQuNDUgTCAzNzYuOTYsMTMyLjgxIEEgNDAuMDAsNDAuMDAgMCAwLDEgMzY3Ljk2LDEyOC4zOCBMIDM2MS4zNSwxMzguNDAgQSA1Mi4wMCw1Mi4wMCAwIDAsMSAzNTQuMDYsMTMyLjU5IEwgMzYxLjg0LDEyMy40MSBBIDQwLjAwLDQwLjAwIDAgMCwxIDM1NS42NiwxMTUuNTIgTCAzNDUuMzYsMTIxLjY3IEEgNTIuMDAsNTIuMDAgMCAwLDEgMzQxLjMyLDExMy4yNyBMIDM1Mi4zMCwxMDguMzggQSA0MC4wMCw0MC4wMCAwIDAsMSAzNTAuMTYsOTguNTkgTCAzMzguMjEsOTkuNjYgQSA1Mi4wMCw1Mi4wMCAwIDAsMSAzMzguMjEsOTAuMzQgTCAzNTAuMjMsOTAuNzAgQSA0MC4wMCw0MC4wMCAwIDAsMSAzNTIuNTUsODAuOTUgTCAzNDEuMzIsNzYuNzMgQSA1Mi4wMCw1Mi4wMCAwIDAsMSAzNDUuMzYsNjguMzMgTCAzNTYuMDQsNzMuODcgQSA0MC4wMCw0MC4wMCAwIDAsMSAzNjIuMzYsNjYuMDkgTCAzNTQuMDYsNTcuNDEgQSA1Mi4wMCw1Mi4wMCAwIDAsMSAzNjEuMzUsNTEuNjAgTCAzNjguNTcsNjEuMjMgQSA0MC4wMCw0MC4wMCAwIDAsMSAzNzcuNjQsNTYuOTYgTCAzNzMuOTMsNDUuNTUgQSA1Mi4wMCw1Mi4wMCAwIDAsMSAzODMuMDIsNDMuNDcgTCAzODUuMzQsNTUuMjcgQSA0MC4wMCw0MC4wMCAwIDAsMSAzOTUuMzcsNTUuMzYgTCAzOTYuOTgsNDMuNDcgQSA1Mi4wMCw1Mi4wMCAwIDAsMSA0MDYuMDcsNDUuNTUgTCA0MDMuMDQsNTcuMTkgQSA0MC4wMCw0MC4wMCAwIDAsMSA0MTIuMDQsNjEuNjIgTCA0MTguNjUsNTEuNjAgQSA1Mi4wMCw1Mi4wMCAwIDAsMSA0MjUuOTQsNTcuNDEgTCA0MTguMTYsNjYuNTkgQSA0MC4wMCw0MC4wMCAwIDAsMSA0MjQuMzQsNzQuNDggTCA0MzQuNjQsNjguMzMgQSA1Mi4wMCw1Mi4wMCAwIDAsMSA0MzguNjgsNzYuNzMgTCA0MjcuNzAsODEuNjIgWiBNIDQwOC4wMCw5NS4wMCBBIDE4LjAwLDE4LjAwIDAgMSwwIDM3Mi4wMCw5NS4wMCBBIDE4LjAwLDE4LjAwIDAgMSwwIDQwOC4wMCw5NS4wMCBaIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LC43NSkiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPgogIDxwYXRoIGQ9Ik0gMzYwLjU0LDQzLjEzIEEgMjYuMDAsMjYuMDAgMCAwLDEgMzYwLjc5LDQ0Ljc0IEwgMzY4LjczLDQzLjc0IEEgMzQuMDAsMzQuMDAgMCAwLDEgMzY4LjczLDUyLjI2IEwgMzYwLjcwLDUxLjkxIEEgMjYuMDAsMjYuMDAgMCAwLDEgMzU3Ljc4LDYwLjUzIEwgMzY0Ljc5LDY0LjM4IEEgMzQuMDAsMzQuMDAgMCAwLDEgMzU5Ljc4LDcxLjI3IEwgMzUzLjUwLDY2LjI3IEEgMjYuMDAsMjYuMDAgMCAwLDEgMzQ2LjA3LDcxLjUzIEwgMzQ5LjQ4LDc4Ljc2IEEgMzQuMDAsMzQuMDAgMCAwLDEgMzQxLjM3LDgxLjQwIEwgMzM5LjIzLDczLjY1IEEgMjYuMDAsMjYuMDAgMCAwLDEgMzMwLjEzLDczLjU0IEwgMzI4LjYzLDgxLjQwIEEgMzQuMDAsMzQuMDAgMCAwLDEgMzIwLjUyLDc4Ljc2IEwgMzIzLjM0LDcxLjI0IEEgMjYuMDAsMjYuMDAgMCAwLDEgMzE2LjA1LDY1LjgwIEwgMzEwLjIyLDcxLjI3IEEgMzQuMDAsMzQuMDAgMCAwLDEgMzA1LjIxLDY0LjM4IEwgMzExLjkxLDU5Ljk1IEEgMjYuMDAsMjYuMDAgMCAwLDEgMzA5LjIxLDUxLjI2IEwgMzAxLjI3LDUyLjI2IEEgMzQuMDAsMzQuMDAgMCAwLDEgMzAxLjI3LDQzLjc0IEwgMzA5LjMwLDQ0LjA5IEEgMjYuMDAsMjYuMDAgMCAwLDEgMzEyLjIyLDM1LjQ3IEwgMzA1LjIxLDMxLjYyIEEgMzQuMDAsMzQuMDAgMCAwLDEgMzEwLjIyLDI0LjczIEwgMzE2LjUwLDI5LjczIEEgMjYuMDAsMjYuMDAgMCAwLDEgMzIzLjkzLDI0LjQ3IEwgMzIwLjUyLDE3LjI0IEEgMzQuMDAsMzQuMDAgMCAwLDEgMzI4LjYzLDE0LjYwIEwgMzMwLjc3LDIyLjM1IEEgMjYuMDAsMjYuMDAgMCAwLDEgMzM5Ljg3LDIyLjQ2IEwgMzQxLjM3LDE0LjYwIEEgMzQuMDAsMzQuMDAgMCAwLDEgMzQ5LjQ4LDE3LjI0IEwgMzQ2LjY2LDI0Ljc2IEEgMjYuMDAsMjYuMDAgMCAwLDEgMzUzLjk1LDMwLjIwIEwgMzU5Ljc4LDI0LjczIEEgMzQuMDAsMzQuMDAgMCAwLDEgMzY0Ljc5LDMxLjYyIEwgMzU4LjA5LDM2LjA1IFogTSAzNDcuMDAsNDguMDAgQSAxMi4wMCwxMi4wMCAwIDEsMCAzMjMuMDAsNDguMDAgQSAxMi4wMCwxMi4wMCAwIDEsMCAzNDcuMDAsNDguMDAgWiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwuNzUpIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KICA8cGF0aCBkPSJNIDM2Ny41MCwxMzUuMjIgQSAyMy4wMCwyMy4wMCAwIDAsMSAzNjcuNzgsMTM2LjgwIEwgMzc0LjcxLDEzNS44MiBBIDMwLjAwLDMwLjAwIDAgMCwxIDM3NC43MSwxNDQuMTggTCAzNjcuNjgsMTQzLjg0IEEgMjMuMDAsMjMuMDAgMCAwLDEgMzY0LjUxLDE1Mi4xOSBMIDM3MC40NCwxNTUuOTAgQSAzMC4wMCwzMC4wMCAwIDAsMSAzNjUuMDcsMTYyLjI5IEwgMzU5LjkxLDE1Ny41MiBBIDIzLjAwLDIzLjAwIDAgMCwxIDM1Mi4xMSwxNjEuODcgTCAzNTQuMjcsMTY4LjUzIEEgMzAuMDAsMzAuMDAgMCAwLDEgMzQ2LjA1LDE2OS45OCBMIDM0NS4xNiwxNjMuMDAgQSAyMy4wMCwyMy4wMCAwIDAsMSAzMzYuMzgsMTYxLjMzIEwgMzMzLjc2LDE2Ny44MiBBIDMwLjAwLDMwLjAwIDAgMCwxIDMyNi41MywxNjMuNjQgTCAzMzAuMzQsMTU3LjcyIEEgMjMuMDAsMjMuMDAgMCAwLDEgMzI0LjY5LDE1MC44MCBMIDMxOC41MSwxNTQuMDggQSAzMC4wMCwzMC4wMCAwIDAsMSAzMTUuNjYsMTQ2LjI0IEwgMzIyLjM4LDE0NC4xNSBBIDIzLjAwLDIzLjAwIDAgMCwxIDMyMi41MCwxMzUuMjIgTCAzMTUuNjYsMTMzLjc2IEEgMzAuMDAsMzAuMDAgMCAwLDEgMzE4LjUxLDEyNS45MiBMIDMyNS4wMCwxMjguNjQgQSAyMy4wMCwyMy4wMCAwIDAsMSAzMzAuODQsMTIxLjg4IEwgMzI2LjUzLDExNi4zNiBBIDMwLjAwLDMwLjAwIDAgMCwxIDMzMy43NiwxMTIuMTggTCAzMzYuOTgsMTE4LjQ0IEEgMjMuMDAsMjMuMDAgMCAwLDEgMzQ1LjgwLDExNy4wMSBMIDM0Ni4wNSwxMTAuMDIgQSAzMC4wMCwzMC4wMCAwIDAsMSAzNTQuMjcsMTExLjQ3IEwgMzUyLjcyLDExOC4zMyBBIDIzLjAwLDIzLjAwIDAgMCwxIDM2MC4zOSwxMjIuOTEgTCAzNjUuMDcsMTE3LjcxIEEgMzAuMDAsMzAuMDAgMCAwLDEgMzcwLjQ0LDEyNC4xMCBMIDM2NC44NCwxMjguMzYgWiBNIDM1NS4wMCwxNDAuMDAgQSAxMC4wMCwxMC4wMCAwIDEsMCAzMzUuMDAsMTQwLjAwIEEgMTAuMDAsMTAuMDAgMCAxLDAgMzU1LjAwLDE0MC4wMCBaIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LC43NSkiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPgogIDxwYXRoIGQ9Ik0gMzYyLjYsMTY1LjIgQSA4MCw4MCAwIDAsMCAzMTQuOCw2Mi42IiBmaWxsPSJub25lIiBzdHJva2U9IiNmOWI4MDAiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPg=="
+           alt="SIMA M&Y SAS" style="height:80px;width:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.3));">
+    </div>
+    <div class="pwd-title" style="font-size:1.2rem;">Comprobante de<br>Mantenimiento</div>
     <div class="pwd-subtitle">Ingrese la contraseña para acceder al formulario</div>
     <label class="pwd-label" for="pwdInput">Contraseña de acceso</label>
     <input
@@ -1311,8 +1317,9 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 <div class="shell">
 
   <!-- Brand bar -->
-  <div class="brand-bar">
-    <span class="brand-title">SIMASAS · Ascensores, Escaleras y Rampas Eléctricas</span>
+  <div class="brand-bar" style="background:rgba(255,255,255,.97);border:none;padding:.5rem 1.2rem;">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgMTgwIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjE4MCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5zaW1hLXRleHQgeyBmb250LWZhbWlseTogIkFyaWFsIEJsYWNrIiwgIkltcGFjdCIsIHNhbnMtc2VyaWY7IGZvbnQtd2VpZ2h0OiA5MDA7IH0KICAgICAgLnN1Yi10ZXh0ICB7IGZvbnQtZmFtaWx5OiAiQXJpYWwiLCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogNzAwOyB9CiAgICAgIC50YWctdGV4dCAgeyBmb250LWZhbWlseTogIkFyaWFsIiwgc2Fucy1zZXJpZjsgZm9udC13ZWlnaHQ6IDcwMDsgbGV0dGVyLXNwYWNpbmc6IDNweDsgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CgogIDwhLS0gPT09IFNJTUEgdGV4dCA9PT0gLS0+CiAgPCEtLSBTIC0tPgogIDx0ZXh0IHg9IjgiIHk9IjExMiIgY2xhc3M9InNpbWEtdGV4dCIgZm9udC1zaXplPSI5NiIgZmlsbD0iIzFhMmE0YSI+UzwvdGV4dD4KICA8IS0tIEkgLS0+CiAgPHRleHQgeD0iNzYiIHk9IjExMiIgY2xhc3M9InNpbWEtdGV4dCIgZm9udC1zaXplPSI5NiIgZmlsbD0iIzFhMmE0YSI+STwvdGV4dD4KICA8IS0tIE0gLS0+CiAgPHRleHQgeD0iOTYiIHk9IjExMiIgY2xhc3M9InNpbWEtdGV4dCIgZm9udC1zaXplPSI5NiIgZmlsbD0iIzFhMmE0YSI+TTwvdGV4dD4KICA8IS0tIEEgb3V0bGluZSAobmF2eSksIHRyaWFuZ2xlIGZpbGwgZ29sZCAtLT4KICA8dGV4dCB4PSIxOTMiIHk9IjExMiIgY2xhc3M9InNpbWEtdGV4dCIgZm9udC1zaXplPSI5NiIgZmlsbD0iIzFhMmE0YSI+QTwvdGV4dD4KICA8IS0tIEdvbGQgdHJpYW5nbGUgaW5zaWRlIEEgKGFwcHJveGltYXRlZCkgLS0+CiAgPHBvbHlnb24gcG9pbnRzPSIyMzcsODggMjI0LDExMyAyNTAsMTEzIiBmaWxsPSIjZjliODAwIi8+CgogIDwhLS0gR29sZCBob3Jpem9udGFsIGxpbmUgdW5kZXIgU0lNQSAtLT4KICA8bGluZSB4MT0iOCIgeTE9IjEyMCIgeDI9IjI3OCIgeTI9IjEyMCIgc3Ryb2tlPSIjZjliODAwIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8IS0tIERhcmsgbGluZSBhYm92ZSBNJlkgU0FTIC0tPgogIDxsaW5lIHgxPSI4IiB5MT0iMTI0IiB4Mj0iMjc4IiB5Mj0iMTI0IiBzdHJva2U9IiMxYTJhNGEiIHN0cm9rZS13aWR0aD0iMS41Ii8+CgogIDwhLS0gVmVydGljYWwgc2VwYXJhdG9yIC0tPgogIDxsaW5lIHgxPSIyODQiIHkxPSIxNSIgeDI9IjI4NCIgeTI9IjE0OCIgc3Ryb2tlPSIjMWEyYTRhIiBzdHJva2Utd2lkdGg9IjMiLz4KCiAgPCEtLSBNJlkgU0FTIC0tPgogIDwhLS0gRGFzaGVzIGxlZnQgLS0+CiAgPGxpbmUgeDE9IjgiIHkxPSIxNDIiIHgyPSIzOCIgeTI9IjE0MiIgc3Ryb2tlPSIjMWEyYTRhIiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDx0ZXh0IHg9IjQ1IiB5PSIxNDciIGNsYXNzPSJzdWItdGV4dCIgZm9udC1zaXplPSIyMiIgZmlsbD0iIzNkNGQ2YSI+TSZhbXA7WSBTQVM8L3RleHQ+CiAgPCEtLSBEYXNoZXMgcmlnaHQgLS0+CiAgPGxpbmUgeDE9IjIwMCIgeTE9IjE0MiIgeDI9IjI3OCIgeTI9IjE0MiIgc3Ryb2tlPSIjMWEyYTRhIiBzdHJva2Utd2lkdGg9IjIuNSIvPgoKICA8IS0tIFRhZ2xpbmUgLS0+CiAgPCEtLSBHb2xkIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIwIiB5MT0iMTYyIiB4Mj0iNDIiIHkyPSIxNjIiIHN0cm9rZT0iI2Y5YjgwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iNDUiIHk9IjE2NiIgY2xhc3M9InRhZy10ZXh0IiBmb250LXNpemU9IjguNSIgZmlsbD0iIzNkNGQ2YSI+U0VSVklDSU9TIElOVEVHUkFMRVMgWSBNQU5URU5JTUlFTlRPUzwvdGV4dD4KICA8bGluZSB4MT0iMjM4IiB5MT0iMTYyIiB4Mj0iMjgwIiB5Mj0iMTYyIiBzdHJva2U9IiNmOWI4MDAiIHN0cm9rZS13aWR0aD0iMiIvPgoKICA8IS0tID09PSBHRUFSIEFSRUEgPT09IC0tPgogIDwhLS0gUGFydGlhbCBhcmMgY2lyY2xlIC0tPgogIDxwYXRoIGQ9Ik0gNDU5LjMsNTAuMCBBIDgwLDgwIDAgMSwxIDMxNC44LDYyLjYiCiAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWEyYTRhIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgoKICA8IS0tIEdlYXJzIChmaWxsLXJ1bGUgZXZlbm9kZCBmb3IgaG9sZXMpIC0tPgogIDxwYXRoIGQ9Ik0gNDI5LjY0LDg5LjYzIEEgNDAuMDAsNDAuMDAgMCAwLDEgNDI5Ljg0LDkxLjQxIEwgNDQxLjc5LDkwLjM0IEEgNTIuMDAsNTIuMDAgMCAwLDEgNDQxLjc5LDk5LjY2IEwgNDI5Ljc3LDk5LjMwIEEgNDAuMDAsNDAuMDAgMCAwLDEgNDI3LjQ1LDEwOS4wNSBMIDQzOC42OCwxMTMuMjcgQSA1Mi4wMCw1Mi4wMCAwIDAsMSA0MzQuNjQsMTIxLjY3IEwgNDIzLjk2LDExNi4xMyBBIDQwLjAwLDQwLjAwIDAgMCwxIDQxNy42NCwxMjMuOTEgTCA0MjUuOTQsMTMyLjU5IEEgNTIuMDAsNTIuMDAgMCAwLDEgNDE4LjY1LDEzOC40MCBMIDQxMS40MywxMjguNzcgQSA0MC4wMCw0MC4wMCAwIDAsMSA0MDIuMzYsMTMzLjA0IEwgNDA2LjA3LDE0NC40NSBBIDUyLjAwLDUyLjAwIDAgMCwxIDM5Ni45OCwxNDYuNTMgTCAzOTQuNjYsMTM0LjczIEEgNDAuMDAsNDAuMDAgMCAwLDEgMzg0LjYzLDEzNC42NCBMIDM4My4wMiwxNDYuNTMgQSA1Mi4wMCw1Mi4wMCAwIDAsMSAzNzMuOTMsMTQ0LjQ1IEwgMzc2Ljk2LDEzMi44MSBBIDQwLjAwLDQwLjAwIDAgMCwxIDM2Ny45NiwxMjguMzggTCAzNjEuMzUsMTM4LjQwIEEgNTIuMDAsNTIuMDAgMCAwLDEgMzU0LjA2LDEzMi41OSBMIDM2MS44NCwxMjMuNDEgQSA0MC4wMCw0MC4wMCAwIDAsMSAzNTUuNjYsMTE1LjUyIEwgMzQ1LjM2LDEyMS42NyBBIDUyLjAwLDUyLjAwIDAgMCwxIDM0MS4zMiwxMTMuMjcgTCAzNTIuMzAsMTA4LjM4IEEgNDAuMDAsNDAuMDAgMCAwLDEgMzUwLjE2LDk4LjU5IEwgMzM4LjIxLDk5LjY2IEEgNTIuMDAsNTIuMDAgMCAwLDEgMzM4LjIxLDkwLjM0IEwgMzUwLjIzLDkwLjcwIEEgNDAuMDAsNDAuMDAgMCAwLDEgMzUyLjU1LDgwLjk1IEwgMzQxLjMyLDc2LjczIEEgNTIuMDAsNTIuMDAgMCAwLDEgMzQ1LjM2LDY4LjMzIEwgMzU2LjA0LDczLjg3IEEgNDAuMDAsNDAuMDAgMCAwLDEgMzYyLjM2LDY2LjA5IEwgMzU0LjA2LDU3LjQxIEEgNTIuMDAsNTIuMDAgMCAwLDEgMzYxLjM1LDUxLjYwIEwgMzY4LjU3LDYxLjIzIEEgNDAuMDAsNDAuMDAgMCAwLDEgMzc3LjY0LDU2Ljk2IEwgMzczLjkzLDQ1LjU1IEEgNTIuMDAsNTIuMDAgMCAwLDEgMzgzLjAyLDQzLjQ3IEwgMzg1LjM0LDU1LjI3IEEgNDAuMDAsNDAuMDAgMCAwLDEgMzk1LjM3LDU1LjM2IEwgMzk2Ljk4LDQzLjQ3IEEgNTIuMDAsNTIuMDAgMCAwLDEgNDA2LjA3LDQ1LjU1IEwgNDAzLjA0LDU3LjE5IEEgNDAuMDAsNDAuMDAgMCAwLDEgNDEyLjA0LDYxLjYyIEwgNDE4LjY1LDUxLjYwIEEgNTIuMDAsNTIuMDAgMCAwLDEgNDI1Ljk0LDU3LjQxIEwgNDE4LjE2LDY2LjU5IEEgNDAuMDAsNDAuMDAgMCAwLDEgNDI0LjM0LDc0LjQ4IEwgNDM0LjY0LDY4LjMzIEEgNTIuMDAsNTIuMDAgMCAwLDEgNDM4LjY4LDc2LjczIEwgNDI3LjcwLDgxLjYyIFogTSA0MDguMDAsOTUuMDAgQSAxOC4wMCwxOC4wMCAwIDEsMCAzNzIuMDAsOTUuMDAgQSAxOC4wMCwxOC4wMCAwIDEsMCA0MDguMDAsOTUuMDAgWiIgZmlsbD0iIzVjNWM1YyIgZmlsbC1ydWxlPSJldmVub2RkIi8+CiAgPHBhdGggZD0iTSAzNjAuNTQsNDMuMTMgQSAyNi4wMCwyNi4wMCAwIDAsMSAzNjAuNzksNDQuNzQgTCAzNjguNzMsNDMuNzQgQSAzNC4wMCwzNC4wMCAwIDAsMSAzNjguNzMsNTIuMjYgTCAzNjAuNzAsNTEuOTEgQSAyNi4wMCwyNi4wMCAwIDAsMSAzNTcuNzgsNjAuNTMgTCAzNjQuNzksNjQuMzggQSAzNC4wMCwzNC4wMCAwIDAsMSAzNTkuNzgsNzEuMjcgTCAzNTMuNTAsNjYuMjcgQSAyNi4wMCwyNi4wMCAwIDAsMSAzNDYuMDcsNzEuNTMgTCAzNDkuNDgsNzguNzYgQSAzNC4wMCwzNC4wMCAwIDAsMSAzNDEuMzcsODEuNDAgTCAzMzkuMjMsNzMuNjUgQSAyNi4wMCwyNi4wMCAwIDAsMSAzMzAuMTMsNzMuNTQgTCAzMjguNjMsODEuNDAgQSAzNC4wMCwzNC4wMCAwIDAsMSAzMjAuNTIsNzguNzYgTCAzMjMuMzQsNzEuMjQgQSAyNi4wMCwyNi4wMCAwIDAsMSAzMTYuMDUsNjUuODAgTCAzMTAuMjIsNzEuMjcgQSAzNC4wMCwzNC4wMCAwIDAsMSAzMDUuMjEsNjQuMzggTCAzMTEuOTEsNTkuOTUgQSAyNi4wMCwyNi4wMCAwIDAsMSAzMDkuMjEsNTEuMjYgTCAzMDEuMjcsNTIuMjYgQSAzNC4wMCwzNC4wMCAwIDAsMSAzMDEuMjcsNDMuNzQgTCAzMDkuMzAsNDQuMDkgQSAyNi4wMCwyNi4wMCAwIDAsMSAzMTIuMjIsMzUuNDcgTCAzMDUuMjEsMzEuNjIgQSAzNC4wMCwzNC4wMCAwIDAsMSAzMTAuMjIsMjQuNzMgTCAzMTYuNTAsMjkuNzMgQSAyNi4wMCwyNi4wMCAwIDAsMSAzMjMuOTMsMjQuNDcgTCAzMjAuNTIsMTcuMjQgQSAzNC4wMCwzNC4wMCAwIDAsMSAzMjguNjMsMTQuNjAgTCAzMzAuNzcsMjIuMzUgQSAyNi4wMCwyNi4wMCAwIDAsMSAzMzkuODcsMjIuNDYgTCAzNDEuMzcsMTQuNjAgQSAzNC4wMCwzNC4wMCAwIDAsMSAzNDkuNDgsMTcuMjQgTCAzNDYuNjYsMjQuNzYgQSAyNi4wMCwyNi4wMCAwIDAsMSAzNTMuOTUsMzAuMjAgTCAzNTkuNzgsMjQuNzMgQSAzNC4wMCwzNC4wMCAwIDAsMSAzNjQuNzksMzEuNjIgTCAzNTguMDksMzYuMDUgWiBNIDM0Ny4wMCw0OC4wMCBBIDEyLjAwLDEyLjAwIDAgMSwwIDMyMy4wMCw0OC4wMCBBIDEyLjAwLDEyLjAwIDAgMSwwIDM0Ny4wMCw0OC4wMCBaIiBmaWxsPSIjNWM1YzVjIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KICA8cGF0aCBkPSJNIDM2Ny41MCwxMzUuMjIgQSAyMy4wMCwyMy4wMCAwIDAsMSAzNjcuNzgsMTM2LjgwIEwgMzc0LjcxLDEzNS44MiBBIDMwLjAwLDMwLjAwIDAgMCwxIDM3NC43MSwxNDQuMTggTCAzNjcuNjgsMTQzLjg0IEEgMjMuMDAsMjMuMDAgMCAwLDEgMzY0LjUxLDE1Mi4xOSBMIDM3MC40NCwxNTUuOTAgQSAzMC4wMCwzMC4wMCAwIDAsMSAzNjUuMDcsMTYyLjI5IEwgMzU5LjkxLDE1Ny41MiBBIDIzLjAwLDIzLjAwIDAgMCwxIDM1Mi4xMSwxNjEuODcgTCAzNTQuMjcsMTY4LjUzIEEgMzAuMDAsMzAuMDAgMCAwLDEgMzQ2LjA1LDE2OS45OCBMIDM0NS4xNiwxNjMuMDAgQSAyMy4wMCwyMy4wMCAwIDAsMSAzMzYuMzgsMTYxLjMzIEwgMzMzLjc2LDE2Ny44MiBBIDMwLjAwLDMwLjAwIDAgMCwxIDMyNi41MywxNjMuNjQgTCAzMzAuMzQsMTU3LjcyIEEgMjMuMDAsMjMuMDAgMCAwLDEgMzI0LjY5LDE1MC44MCBMIDMxOC41MSwxNTQuMDggQSAzMC4wMCwzMC4wMCAwIDAsMSAzMTUuNjYsMTQ2LjI0IEwgMzIyLjM4LDE0NC4xNSBBIDIzLjAwLDIzLjAwIDAgMCwxIDMyMi41MCwxMzUuMjIgTCAzMTUuNjYsMTMzLjc2IEEgMzAuMDAsMzAuMDAgMCAwLDEgMzE4LjUxLDEyNS45MiBMIDMyNS4wMCwxMjguNjQgQSAyMy4wMCwyMy4wMCAwIDAsMSAzMzAuODQsMTIxLjg4IEwgMzI2LjUzLDExNi4zNiBBIDMwLjAwLDMwLjAwIDAgMCwxIDMzMy43NiwxMTIuMTggTCAzMzYuOTgsMTE4LjQ0IEEgMjMuMDAsMjMuMDAgMCAwLDEgMzQ1LjgwLDExNy4wMSBMIDM0Ni4wNSwxMTAuMDIgQSAzMC4wMCwzMC4wMCAwIDAsMSAzNTQuMjcsMTExLjQ3IEwgMzUyLjcyLDExOC4zMyBBIDIzLjAwLDIzLjAwIDAgMCwxIDM2MC4zOSwxMjIuOTEgTCAzNjUuMDcsMTE3LjcxIEEgMzAuMDAsMzAuMDAgMCAwLDEgMzcwLjQ0LDEyNC4xMCBMIDM2NC44NCwxMjguMzYgWiBNIDM1NS4wMCwxNDAuMDAgQSAxMC4wMCwxMC4wMCAwIDEsMCAzMzUuMDAsMTQwLjAwIEEgMTAuMDAsMTAuMDAgMCAxLDAgMzU1LjAwLDE0MC4wMCBaIiBmaWxsPSIjNWM1YzVjIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KCiAgPCEtLSBHb2xkIGFjY2VudCBhcmMgdW5kZXIgZ2VhciBhcmVhIC0tPgogIDxwYXRoIGQ9Ik0gMzYyLjYsMTY1LjIgQSA4MCw4MCAwIDAsMCAzMTQuOCw2Mi42IgogICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Y5YjgwMCIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+"
+         alt="SIMA M&Y SAS" style="height:70px;width:auto;display:block;">
     <div class="brand-emergency">
       <span class="em-icon">📞</span>
       <div class="em-text">318 411 3196 · 311 512 2624<br>infosimasas@gmail.com</div>
@@ -2228,8 +2235,8 @@ function buildPdfInnerHTML() {
 
   <!-- HEADER -->
   <div style="text-align:center;border-bottom:3px solid #0f1f3d;padding-bottom:10px;margin-bottom:14px;">
-    <div style="font-size:20px;font-weight:900;color:#0f1f3d;text-transform:uppercase;letter-spacing:.04em;line-height:1.1;">COMPROBANTE DE MANTENIMIENTO Y SERVICIOS</div>
-    <div style="display:inline-block;background:#d32f2f;color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:4px;margin:6px 0 4px;">📞 318 411 3196 · 311 512 2624 · infosimasas@gmail.com</div>
+    <div style="font-size:20px;font-weight:900;color:#1a2740;text-transform:uppercase;letter-spacing:.04em;line-height:1.1;">SIMA M&amp;Y SAS — COMPROBANTE DE MANTENIMIENTO Y SERVICIOS</div>
+    <div style="display:inline-block;background:#1a2740;color:#f9b800;font-size:11px;font-weight:700;padding:3px 12px;border-radius:4px;margin:6px 0 4px;">📞 318 411 3196 · 311 512 2624 · infosimasas@gmail.com</div>
     <div style="font-size:8.5px;color:#6b7a99;line-height:1.6;margin-top:3px;">
       Instalación / Modernización / Reparación / Asesorías e Interventorías / Importadores Directos<br>
       Venta y Fabricación de Repuestos / Equipos Nuevos · Puertas Automáticas / Aires Acondicionados / Bombas hidráulicas / Motobombas<br>
@@ -2457,15 +2464,15 @@ function buildJsPDF() {
   doc.setFont('helvetica','bold');
   doc.setFontSize(15);
   doc.setTextColor(15,31,61);
-  doc.text('SIMASAS · COMPROBANTE DE MANTENIMIENTO Y SERVICIOS', PW/2, y+4, {align:'center'});
+  doc.text('SIMA M&Y SAS · COMPROBANTE DE MANTENIMIENTO Y SERVICIOS', PW/2, y+4, {align:'center'});
   y += 9;
 
-  // Emergency bar
-  doc.setFillColor(211,47,47);
+  // Contact bar (SIMA brand: navy with gold text)
+  doc.setFillColor(26,39,64);
   doc.roundedRect(ML, y, CW, 6, 1, 1, 'F');
   doc.setFont('helvetica','bold');
   doc.setFontSize(8.5);
-  doc.setTextColor(255,255,255);
+  doc.setTextColor(249,184,0);
   doc.text('318 411 3196  ·  311 512 2624  ·  infosimasas@gmail.com', PW/2, y+4.2, {align:'center'});
   y += 8;
 
